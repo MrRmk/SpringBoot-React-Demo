@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dream.mapper.UserMapper">
+
+    <!--如下type的User就是mybatis-config.xml中配置的user-->
+    <resultMap id="BaseResultMap" type="com.example.dream.bean.User" >
+
+        <!-- column是数据库字段类型，property是实体类类型    jdbcType是数据库类型  -->
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+        <result column="nickname" property="nickName" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="INTEGER" />
+        <result column="summary" property="summary" jdbcType="VARCHAR" />
+        <result column="qq" property="qq" jdbcType="VARCHAR" />
+        <result column="tel" property="tel" jdbcType="VARCHAR" />
+        <result column="school" property="school" jdbcType="VARCHAR" />
+        <result column="education" property="education" jdbcType="VARCHAR" />
+        <result column="certificate" property="certificate" jdbcType="VARCHAR" />
+        <result column="position" property="position" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="isAdmin" property="isAdmin" jdbcType="INTEGER" />
+
+    </resultMap>
+
+    <select id="getInfo" resultType="com.example.dream.bean.User">
+        SELECT * FROM user WHERE name = #{name} AND password = #{password}
+    </select>
+
+    <!--通过账号密码获取用户对象-->
+    <select id="getInfoByIdAndPsd" resultType="com.example.dream.bean.User">
+        SELECT * FROM user WHERE id = #{id} AND password = #{password}
+    </select>
+
+    <!--通过名字获取用户对象-->
+    <select id="getInfoByName"  parameterType="java.lang.String" resultType="com.example.dream.bean.User">
+        SELECT * FROM user WHERE name = #{name}
+    </select>
+
+    <!--通过名字获取用户对象-->
+    <select id="getInfoById"  parameterType="java.lang.String" resultType="com.example.dream.bean.User">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+</mapper>
