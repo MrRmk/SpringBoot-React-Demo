@@ -22,7 +22,7 @@ public class DreamApplicationTests {
         User user = userService.getInfoById("14201101");
         System.out.println("该用户名字是：");
         if(user!=null) {
-            System.out.println(user.getUserRealName());
+            System.out.println(user.getName());
         }else{
             System.out.println("user对象为空！！系统异常！！");
         }
